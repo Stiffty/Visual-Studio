@@ -37,7 +37,7 @@ namespace Minesweeper
                 }
             }
             Random rand = new Random();
-            for (int i = 0; i < 30; i++)
+            for (int i = 0; i < 60; i++)
             {
                
                     Feld[rand.Next(grigsize - 1), rand.Next(grigsize - 1)] = -1;
@@ -159,11 +159,14 @@ namespace Minesweeper
         
         private void ButtenDClick(object sender, MouseEventArgs e)
         {
-            Button b = sender as Button;
-            int x = b.Location.X / B_Size;
-            int y = b.Location.Y / B_Size;
-            b.Text = "B";
-            b.BackColor = Color.Blue;
+           
+            if (e.Button == MouseButtons.Right)
+            {
+                Button b = sender as Button;
+                b.BackColor = Color.Blue;
+                b.Text = "B";
+            }
+            
         }
 
         private void ButtenClick(object sender, EventArgs e)
