@@ -11,12 +11,20 @@ namespace Minesweeper
         /// <summary>
         /// Der Haupteinstiegspunkt für die Anwendung.
         /// </summary>
+        public static int fertig = 0;
+        public static int richtigB = 0;
+        public static int B_Size = 25;
+        public static int grigsize = 10;
+        public static int bomben = 0;
         [STAThread]
         static void Main()
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Form1());
+            while (true) {
+                Application.Run(new Einstellungen());
+                Application.Run(new Form1());
+            }
         }
     }
 }
