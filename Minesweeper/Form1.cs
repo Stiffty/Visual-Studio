@@ -218,7 +218,8 @@ namespace Minesweeper
                 else if (Feld[x,y] == -1)
                 {
                     MessageBox.Show("Du Hast Verloren!!", "BOOOM");
-                    
+                    this.Close();
+
                 }
                 else
                 {
@@ -234,6 +235,10 @@ namespace Minesweeper
                 fertig--;
             }
         }
-       
+
+        private void Form1_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            
+        }
     }
 }

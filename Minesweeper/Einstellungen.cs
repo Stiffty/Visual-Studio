@@ -36,6 +36,11 @@ namespace Minesweeper
             Environment.Exit(0);
         }
 
+        private void button2_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
        
     }
 }

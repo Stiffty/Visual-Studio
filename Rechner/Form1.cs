@@ -163,5 +163,7 @@ namespace Rechner
             eingabeA = textBox1.Text;
             textBox1.Text = "";
         }
+
+        
     }
 }
