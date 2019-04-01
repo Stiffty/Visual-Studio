@@ -21,10 +21,10 @@ namespace Matrizen
         private void button1_Click(object sender, EventArgs e)
         {
             // Subtraktion
-            int min = int.Parse(textBox18.Text);
+            int min = (int.Parse(textBox18.Text));
             int max = int.Parse(textBox18.Text);
             textBox18.Text = (int.Parse(textBox1.Text) - int.Parse(textBox7.Text)).ToString();
-            if (int.Parse(textBox18.Text) > (int.Parse(textBox17.Text)))
+            if (int.Parse(textBox18.Text) > int.Parse(textBox17.Text))
             {
                 max = int.Parse(textBox17.Text);
             }
@@ -46,12 +46,12 @@ namespace Matrizen
             {
                 max = int.Parse(textBox15.Text);
             }
-            if (int.Parse(textBox16.Text) < (int.Parse(textBox15.Text)))
+            if (int.Parse(textBox16.Text) < int.Parse(textBox15.Text))
             {
                 min = int.Parse(textBox15.Text);
             }
             textBox15.Text = (int.Parse(textBox4.Text) - int.Parse(textBox10.Text)).ToString();
-            if (int.Parse(textBox15.Text) > (int.Parse(textBox14.Text)))
+            if (int.Parse(textBox15.Text) > int.Parse(textBox14.Text))
             {
                 max = int.Parse(textBox14.Text);
             }
