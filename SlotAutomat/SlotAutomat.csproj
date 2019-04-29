@@ -65,6 +65,7 @@
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
     </Compile>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -78,6 +79,51 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Orange O.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Orange M.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Orange U.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Slot2.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\7 M.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\7 O.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\7 U.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Kirsche M.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Kirsche O.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Kirsche U.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Zitrone M.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Zitrone O.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Zitrone U.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Kirsche M1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Slot21.jpg" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

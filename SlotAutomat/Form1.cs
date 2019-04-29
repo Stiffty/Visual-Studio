@@ -5,6 +5,7 @@ using System.Data;
 using System.Drawing;
 using System.IO;
 using System.Linq;
+using System.Media;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
@@ -15,76 +16,111 @@ namespace SlotAutomat
     public partial class Form1 : Form
     {
         private double konto = 100000;
-        private double einsatz = 0;
+        private double einsatz = 1;
         private int skip = 0;
+        System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
+
         public Form1()
         {
             InitializeComponent();
             Random rand = new Random();
             label2.Text = (konto).ToString();
             label4.Text = (einsatz).ToString();
+            label8.Text = " ";
         }
 
         private void button1_Click(object sender, EventArgs e)
-        {
-            label6.Text = " ";
+        { 
+            label8.Text = " ";
             losung();
             gewinne();
+           
         }
 
-       
+
 
         public void gewinne()
         {
-            if (konto <=0)
+            if (konto <= 0)
             {
                 MessageBox.Show("Du Hast kein Geld mehr!!");
                 this.Close();
             }
 
             Random rand = new Random();
-            double random = rand.Next(1,650);
+            double random = rand.Next(1, 650);
+
+            konto -= einsatz;
 
             if (random >= 325)
             {
-                panel1.BackColor = Color.Yellow;
-                panel2.BackColor = Color.Yellow;
-                panel3.BackColor = Color.Yellow;
-                konto += einsatz*0.5;
-                label6.Text = "Mal 0,5";
+                panel4.BackgroundImage = global::SlotAutomat.Properties.Resources.Zitrone_O;
+                panel5.BackgroundImage = global::SlotAutomat.Properties.Resources.Zitrone_O;
+                panel6.BackgroundImage = global::SlotAutomat.Properties.Resources.Zitrone_O;
+                
             }
             if (random == 1 || random == 2)
             {
-                panel1.BackColor = Color.Red;
-                panel2.BackColor = Color.Red;
-                panel3.BackColor = Color.Red;
-                konto += einsatz * 50;
-                label6.Text = "Mal 50";
-            }
-            if (random >= 4 && random <= 7)
-            {
-                panel1.BackColor = Color.Blue;
-                panel2.BackColor = Color.Blue;
-                panel3.BackColor = Color.Blue;
-                konto += einsatz * 25;
-                label6.Text = "Mal 25";
+                panel4.BackgroundImage = global::SlotAutomat.Properties.Resources.Orange_O;
+                panel5.BackgroundImage = global::SlotAutomat.Properties.Resources.Orange_O;
+                panel6.BackgroundImage = global::SlotAutomat.Properties.Resources.Orange_O;
+               
             }
             if (random == 1000)
             {
-                panel1.BackColor = Color.Gold;
-                panel2.BackColor = Color.Gold;
-                panel3.BackColor = Color.Gold;
+                panel4.BackgroundImage = global::SlotAutomat.Properties.Resources._7_O;
+                panel5.BackgroundImage = global::SlotAutomat.Properties.Resources._7_O;
+                panel6.BackgroundImage = global::SlotAutomat.Properties.Resources._7_O;
+                
+            }
+            if (random >= 8 && random <= 15)
+            {
+                panel4.BackgroundImage = global::SlotAutomat.Properties.Resources.Kirsche_O;
+                panel5.BackgroundImage = global::SlotAutomat.Properties.Resources.Kirsche_O;
+                panel6.BackgroundImage = global::SlotAutomat.Properties.Resources.Kirsche_O;
+                
+            }
+           
+            panel4.BackgroundImage = global::SlotAutomat.Properties.Resources._7_O;
+            panel5.BackgroundImage = global::SlotAutomat.Properties.Resources.Zitrone_O;
+            panel6.BackgroundImage = global::SlotAutomat.Properties.Resources.Orange_O;
+
+            if (random >= 325)
+            {
+                panel1.BackgroundImage = global::SlotAutomat.Properties.Resources.Zitrone_M;
+                panel2.BackgroundImage = global::SlotAutomat.Properties.Resources.Zitrone_M;
+                panel3.BackgroundImage = global::SlotAutomat.Properties.Resources.Zitrone_M;
+                konto += einsatz * 5;
+                label8.Text = "Mal 5";
+                blinker();
+            }
+            if (random == 1 || random == 2)
+            {
+                panel1.BackgroundImage = global::SlotAutomat.Properties.Resources.Orange_M;
+                panel2.BackgroundImage = global::SlotAutomat.Properties.Resources.Orange_M;
+                panel3.BackgroundImage = global::SlotAutomat.Properties.Resources.Orange_M;
+                konto += einsatz * 50;
+                label8.Text = "Mal 50";
+                blinker();
+            }
+            if (random == 1000)
+            {
+                panel1.BackgroundImage = global::SlotAutomat.Properties.Resources._7_M;
+                panel2.BackgroundImage = global::SlotAutomat.Properties.Resources._7_M;
+                panel3.BackgroundImage = global::SlotAutomat.Properties.Resources._7_M;
                 konto += einsatz * 250;
-                label6.Text = "Mal 250";
+                label8.Text = "Mal 250";
+                blinker();
                 MessageBox.Show("Sie Haben Den Jackpot geknackt!!");
             }
             if (random >= 8 && random <= 15)
             {
-                panel1.BackColor = Color.Green;
-                panel2.BackColor = Color.Green;
-                panel3.BackColor = Color.Green;
-                konto += einsatz * 5;
-                label6.Text = "Mal 5";
+                panel1.BackgroundImage = global::SlotAutomat.Properties.Resources.Kirsche_M1;
+                panel2.BackgroundImage = global::SlotAutomat.Properties.Resources.Kirsche_M1;
+                panel3.BackgroundImage = global::SlotAutomat.Properties.Resources.Kirsche_M1;
+                konto += einsatz * 10;
+                label8.Text = "Mal 10";
+                blinker();
             }
             label2.Text = (konto).ToString();
         }
@@ -109,11 +145,7 @@ namespace SlotAutomat
         }
 
 
-        private void trackBar1_Scroll(object sender, EventArgs e)
-        {
-            label4.Text = (trackBar1.Value).ToString();
-            einsatz = trackBar1.Value;
-        }
+
 
 
         private void textBox1_TextChanged(object sender, EventArgs e)
@@ -127,7 +159,6 @@ namespace SlotAutomat
             losung();
             for (int i = 0; i < skip; i++)
             {
-                konto -= einsatz;
                 gewinne();
             }
         }
@@ -137,12 +168,17 @@ namespace SlotAutomat
         {
             Random rand = new Random();
             double last;
-            double random;
+            int mitte = 3;
+            int mitte2 = 0;
+            int oben;
+            int unten = 1;
+            int swich = 0;
 
+            button1.Enabled = false;
 
-            random = rand.Next(1, 4);
-            last = random;
-            konto -= einsatz;
+            oben = rand.Next(1, 4);
+            last = oben;
+
             label2.Text = (konto).ToString();
 
             if (konto <= 0)
@@ -150,80 +186,161 @@ namespace SlotAutomat
                 MessageBox.Show("Du Hast kein Geld mehr!!");
                 this.Close();
             }
+
             button1.Enabled = false;
-            for (int i = 0; i < 15; i++)
+
+            for (int i = 0; i < 25; i++)
             {
-                random = rand.Next(1, 4);
-                while (last == random)
+                oben = rand.Next(1, 4);
+                while (last == oben && last == unten && last == mitte)
                 {
-                    random = rand.Next(1, 4);
+                    oben = rand.Next(1, 4);
                 }
-                last = random;
+                last = oben;
 
-                if (random == 1)
+
+
+                //oben
+                if (oben == 1)
                 {
-                    panel1.BackColor = Color.Green;
-                    panel2.BackColor = Color.Blue;
-                    panel3.BackColor = Color.Red;
+                    panel4.BackgroundImage = global::SlotAutomat.Properties.Resources.Orange_O;
+                    panel5.BackgroundImage = global::SlotAutomat.Properties.Resources.Kirsche_O;
+                    panel6.BackgroundImage = global::SlotAutomat.Properties.Resources._7_O;
                 }
-                if (random == 2)
+                if (oben == 2)
                 {
-                    panel1.BackColor = Color.Blue;
-                    panel2.BackColor = Color.Green;
-                    panel3.BackColor = Color.Yellow;
+                    panel4.BackgroundImage = global::SlotAutomat.Properties.Resources.Kirsche_O;
+                    panel5.BackgroundImage = global::SlotAutomat.Properties.Resources.Orange_O;
+                    panel6.BackgroundImage = global::SlotAutomat.Properties.Resources.Zitrone_O;
 
                 }
-                if (random == 3)
+                if (oben == 3)
                 {
-                    panel1.BackColor = Color.Red;
-                    panel2.BackColor = Color.Yellow;
-                    panel3.BackColor = Color.Green;
+                    panel4.BackgroundImage = global::SlotAutomat.Properties.Resources._7_O;
+                    panel5.BackgroundImage = global::SlotAutomat.Properties.Resources.Zitrone_O;
+                    panel6.BackgroundImage = global::SlotAutomat.Properties.Resources.Orange_O;
                 }
-                if (random == 4)
+                if (oben == 4)
                 {
-                    panel1.BackColor = Color.Yellow;
-                    panel2.BackColor = Color.Red;
-                    panel3.BackColor = Color.Blue;
+                    panel4.BackgroundImage = global::SlotAutomat.Properties.Resources.Zitrone_O;
+                    panel5.BackgroundImage = global::SlotAutomat.Properties.Resources._7_O;
+                    panel6.BackgroundImage = global::SlotAutomat.Properties.Resources.Kirsche_O;
                 }
-                wait(100);
 
+
+
+                //mitte
+                if (mitte == 1)
+                {
+                    panel1.BackgroundImage = global::SlotAutomat.Properties.Resources.Orange_M;
+                    panel2.BackgroundImage = global::SlotAutomat.Properties.Resources.Kirsche_M1;
+                    panel3.BackgroundImage = global::SlotAutomat.Properties.Resources._7_M;
+                }
+                if (mitte == 2)
+                {
+                    panel1.BackgroundImage = global::SlotAutomat.Properties.Resources.Kirsche_M1;
+                    panel2.BackgroundImage = global::SlotAutomat.Properties.Resources.Orange_M;
+                    panel3.BackgroundImage = global::SlotAutomat.Properties.Resources.Zitrone_M;
+
+                }
+                if (mitte == 3)
+                {
+                    panel1.BackgroundImage = global::SlotAutomat.Properties.Resources._7_M;
+                    panel2.BackgroundImage = global::SlotAutomat.Properties.Resources.Zitrone_M;
+                    panel3.BackgroundImage = global::SlotAutomat.Properties.Resources.Orange_M;
+                }
+                if (mitte == 4)
+                {
+                    panel1.BackgroundImage = global::SlotAutomat.Properties.Resources.Zitrone_M;
+                    panel2.BackgroundImage = global::SlotAutomat.Properties.Resources._7_M;
+                    panel3.BackgroundImage = global::SlotAutomat.Properties.Resources.Kirsche_M1;
+                }
+
+
+                mitte = oben;
+
+                //unten
+                if (unten == 1)
+                {
+                    panel7.BackgroundImage = global::SlotAutomat.Properties.Resources.Orange_U;
+                    panel8.BackgroundImage = global::SlotAutomat.Properties.Resources.Kirsche_U;
+                    panel9.BackgroundImage = global::SlotAutomat.Properties.Resources._7_U;
+                }
+                if (unten == 2)
+                {
+                    panel7.BackgroundImage = global::SlotAutomat.Properties.Resources.Kirsche_U;
+                    panel8.BackgroundImage = global::SlotAutomat.Properties.Resources.Orange_U;
+                    panel9.BackgroundImage = global::SlotAutomat.Properties.Resources.Zitrone_U;
+
+                }
+                if (unten == 3)
+                {
+                    panel7.BackgroundImage = global::SlotAutomat.Properties.Resources._7_U;
+                    panel8.BackgroundImage = global::SlotAutomat.Properties.Resources.Zitrone_U;
+                    panel9.BackgroundImage = global::SlotAutomat.Properties.Resources.Orange_U;
+                }
+                if (unten == 4)
+                {
+                    panel7.BackgroundImage = global::SlotAutomat.Properties.Resources.Zitrone_U;
+                    panel8.BackgroundImage = global::SlotAutomat.Properties.Resources._7_U;
+                    panel9.BackgroundImage = global::SlotAutomat.Properties.Resources.Kirsche_U;
+                }
+                unten = mitte2;
+
+                    if (swich == 0)
+                    {
+                        swich = 1;
+                    }
+                    else
+                    {
+                        mitte2 = mitte;
+                    }
+
+                    wait(100);
+
+                
+                
             }
             button1.Enabled = true;
         }
-        public void anzahl()
+        private void button3_Click(object sender, EventArgs e)
         {
-            String line;
-            try
+            if (einsatz > 0)
             {
-                //Pass the file path and file name to the StreamReader constructor
-                StreamReader sr = new StreamReader("C:\\Users\\elach\\SlotAutomat.txt");
-
-                //Read the first line of text
-                line = sr.ReadLine();
-
-                //Continue to read until you reach end of file
-                while (line != null)
-                {
-                    //write the lie to console window
-                    Console.WriteLine(line);
-                    //Read the next line
-                    line = sr.ReadLine();
-                }
-
-                //close the file
-                sr.Close();
-                Console.ReadLine();
-            }
-            catch (Exception e)
-            {
-                Console.WriteLine("Exception: " + e.Message);
-            }
-            finally
-            {
-                Console.WriteLine("Executing finally block.");
+                einsatz--;
+                label4.Text = (einsatz).ToString();
             }
         }
 
-        
+        private void button4_Click(object sender, EventArgs e)
+        {
+            if (einsatz <= konto)
+            {
+                einsatz++;
+                label4.Text = (einsatz).ToString();
+            }
+        }
+
+        private void button5_Click(object sender, EventArgs e)
+        {
+            einsatz = konto;
+            label4.Text = (einsatz).ToString();
+        }
+        private void blinker()
+        {
+            SoundPlayer simpleSound = new SoundPlayer(@"c:\Slot.wav");
+
+            simpleSound.Play();
+            wait(3500);
+            simpleSound.Stop();
+
+            
+        }
+
+        private void button6_Click(object sender, EventArgs e)
+        {
+            skip = 0;
+        }
     }
 }
+
