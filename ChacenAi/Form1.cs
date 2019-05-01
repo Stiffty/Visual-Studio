@@ -53,8 +53,10 @@ namespace ChacenAi
                 {
                     test = MaxK[i];
                 }
-                progressBar1.Value = +1;
-                label33.Text = (bank).ToString();
+                auswertung();
+                anpassung();
+
+                
             }
             label1.Text = (test).ToString();
             ausgabe();
@@ -195,16 +197,26 @@ namespace ChacenAi
         private void auswertung()
         {
             int winnerP = int.Parse(textBox4.Text);
+            int winnerPLast = winnerP;
             int Gewinn = int.Parse(textBox3.Text);
+            int GewinnLast= Gewinn;
 
-            if (Gewinn == konto&&(gewinner*100)/ int.Parse(textBox1.Text) == winnerP)
+            if (Gewinn == bank&&(gewinner*100)/ int.Parse(textBox1.Text) == winnerP)
             {
 
             
             }
-            if ()
+            if (winnerPLast<winnerP||Gewinn>GewinnLast)
             {
-
+                besser = 1;
+                winnerPLast = winnerP;
+                GewinnLast = Gewinn;
+            }
+            else
+            {
+                besser = 0;
+                winnerPLast = winnerP;
+                GewinnLast = Gewinn;
             }
         }
 
@@ -355,6 +367,6 @@ namespace ChacenAi
             }
         }
 
-       
+      
     }
 }
