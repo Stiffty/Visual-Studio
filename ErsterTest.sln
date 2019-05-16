@@ -31,6 +31,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PacmenV1", "PacmenV1\Pacmen
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Mapgenerator", "Mapgenerator\Mapgenerator.csproj", "{DC332D57-142F-49DC-913C-AB72B74E9555}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Jumper", "Jumper\Jumper.csproj", "{EB0688C6-1329-4183-ABDC-76898E5071DE}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -93,6 +95,10 @@ Global
 		{DC332D57-142F-49DC-913C-AB72B74E9555}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{DC332D57-142F-49DC-913C-AB72B74E9555}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{DC332D57-142F-49DC-913C-AB72B74E9555}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EB0688C6-1329-4183-ABDC-76898E5071DE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EB0688C6-1329-4183-ABDC-76898E5071DE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EB0688C6-1329-4183-ABDC-76898E5071DE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EB0688C6-1329-4183-ABDC-76898E5071DE}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
