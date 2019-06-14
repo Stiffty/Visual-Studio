@@ -14,30 +14,23 @@ namespace Jumper
 {
     public partial class Form1 : Form
     {
+        private int x = 730;
+        private int y = 300;
+        private Panel[] Pa = new Panel[800];
+
 
         public Form1()
         {
             InitializeComponent();
+            generat();
         }
 
         private void button1_Click(object sender,EventArgs e)
         {
             
-            int x = 730;
-            int y = 300;
-            while (true)
-            {
-                if (x == 0)
-                {
-                    x = 800;
-                }
-                else
-                {
-                    x-=10;
-                }
-                panel3.Location = new System.Drawing.Point(x,y);
-                wait(1);
-            }
+            x = 730;
+            y = 300;
+           
         }
 
 
@@ -64,7 +57,7 @@ namespace Jumper
             }
         }
 
-        private void Form1_KeyDown(object sender,KeyEventArgs e)
+       /* private void Form1_KeyDown(object sender,KeyEventArgs e)
         {
             int x = 124;
             int y = 260;
@@ -77,6 +70,50 @@ namespace Jumper
                 y += 30;
                 panel2.Location = new System.Drawing.Point(x,y);
             }
+        }*/
+
+        public void generat()
+        {
+            int x = 10;
+            for (int i = 0; i < 80; i++)
+            {
+                Panel P = new Panel
+                {
+                    Size = new Size(10, 170),
+                    Location = new Point((x), (170)),
+                    BackColor = Color.Black
+                    
+                };
+                P.Show();
+                Controls.Add(P);
+                
+                for (int j = x; j < x+10; j++)
+                {
+                    Pa[j] = P;
+                }
+                x += 10;
+            }
+        }
+        public void test(Panel P )
+        {
+            
+            if(Pa[x] != null)
+            {
+                Pa[x].Location = new System.Drawing.Point(x, 170+20);
+            }
+        }
+        private void timer1_Tick(object sender, EventArgs e)
+        {
+            if (x == 0)
+            {
+                x = 800;
+            }
+            else
+            {
+                x -= 10;
+            }
+            panel3.Location = new System.Drawing.Point(x, y);
+           
         }
     }
 }

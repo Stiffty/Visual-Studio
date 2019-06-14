@@ -2,6 +2,7 @@
 using System.Windows.Forms;
 using TikTakToe.Properties;
 
+
 namespace TikTakToe
 {
     public partial class Form1 : Form
@@ -110,7 +111,7 @@ namespace TikTakToe
                             CounterP1q++;
                         else if (Feld[i, j] == 2) CounterP2q++;
                     }
-                    else if (i == 0 && j == 2 || i == 1 && j == 1 || i == 2 && j == 0)
+                     if (i == 0 && j == 2 || i == 1 && j == 1 || i == 2 && j == 0)
                     {
                         if (Feld[i, j] == 1)
                             CounterP1q2++;
@@ -146,10 +147,20 @@ namespace TikTakToe
 
             foreach (Control formControl in Controls)
             {
-                if (!(formControl is Button button)) continue;
-                button.Enabled = true;
-                button.BackgroundImage = null;
+                
+                if (!(formControl is Button)) continue;
+                Button b = (formControl as Button);
+                b.Enabled = true;
+                b.BackgroundImage = null;
             }
+
+            
+        }
+
+      
+        private void getComponents(Control comp, Action<int, int, object, EventArgs> button)
+        {
+            throw new NotImplementedException();
         }
 
         private void button1_Click(object sender, EventArgs e)
